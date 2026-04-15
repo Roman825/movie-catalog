@@ -47,6 +47,8 @@ movie-catalog/
 | GET   | /api/movies?genreId=4      | Фільми відфільтровані за жанром |
 | GET   | /api/movies/:id            | Отримати один фільм             |
 | POST  | /api/movies                | Додати новий фільм              |
+| PATCH | /api/movies/:id            | Оновити фільм                   |
+| DELETE| /api/movies/:id            | Видалити фільм                  |
 
 ### Жанри
 
@@ -55,6 +57,8 @@ movie-catalog/
 | GET   | /api/genres     | Список всіх жанрів    |
 | GET   | /api/genres/:id | Отримати один жанр    |
 | POST  | /api/genres     | Додати новий жанр     |
+| PATCH | /api/movies/:id | Оновити жанр          |
+| DELETE| /api/movies/:id | Видалити жанр         |
 
 ## Запуск Backend
 
@@ -70,24 +74,20 @@ API доступне на `http://localhost:3000/api`
 
 ```bash
 # Всі фільми
-curl http://localhost:3000/api/movies
+Invoke-RestMethod -Uri http://localhost:3000/api/movies
 
 # Один фільм
-curl http://localhost:3000/api/movies/1
-
-# Фільми жанру Sci-Fi (id=4)
-curl http://localhost:3000/api/movies?genreId=4
+Invoke-RestMethod -Uri http://localhost:3000/api/movies/1
 
 # Додати фільм
-curl -X POST http://localhost:3000/api/movies \
-  -H "Content-Type: application/json" \
-  -d '{"title":"Interstellar","director":"Christopher Nolan","year":2014,"rating":8.6,"genreId":4}'
+Invoke-RestMethod -Method Post -Uri http://localhost:3000/api/movies -ContentType "application/json" -Body '{"title":"Interstellar","director":"Christopher Nolan","year":2014,"rating":8.6,"genreId":4}'
+
+# Оновити рейтинг
+Invoke-RestMethod -Method Patch -Uri http://localhost:3000/api/movies/1 -ContentType "application/json" -Body '{"rating":9.5}'
+
+# Видалити фільм
+Invoke-RestMethod -Method Delete -Uri http://localhost:3000/api/movies/3
 
 # Всі жанри
-curl http://localhost:3000/api/genres
-
-# Додати жанр
-curl -X POST http://localhost:3000/api/genres \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Thriller"}'
+Invoke-RestMethod -Uri http://localhost:3000/api/genres
 ```
