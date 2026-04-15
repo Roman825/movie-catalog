@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateMovieDto } from './dto/create-movie.dto';
+import { UpdateMovieDto } from './dto/update-movie.dto';
 import { GenresService } from '../genres/genres.service';
 
 export interface Movie {
@@ -45,5 +46,24 @@ export class MoviesService {
     };
     this.movies.push(movie);
     return movie;
+  }
+
+  update(id: number, dto: UpdateMovieDto): Movie {
+    const movie = this.findOne(id);
+
+    if (dto.genreId !== undefined) {
+      const genre = this.genresService.findOne(dto.genreId);
+      movie.genreName = genre.name;
+    }
+
+    Object.assign(movie, dto);
+    return movie;
+  }
+
+  remove(id: number): { message: string } {
+    const index = this.movies.findIndex((m) => m.id === id);
+    if (index === -1) throw new NotFoundException(`Movie with id ${id} not found`);
+    this.movies.splice(index, 1);
+    return { message: `Movie with id ${id} has been deleted` };
   }
 }
