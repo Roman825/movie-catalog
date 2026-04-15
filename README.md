@@ -70,7 +70,7 @@ npm run start:dev
 
 API доступне на `http://localhost:3000/api`
 
-## Приклади запитів (cURL)
+## Приклади запитів (PowerShell)
 
 ```bash
 # Всі фільми
