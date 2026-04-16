@@ -5,7 +5,7 @@
 ## Технології
 
 - **Backend:** Node.js, Nest.js, TypeScript
-- **Frontend:** React (Vite), TypeScript 
+- **Frontend:** React 18, Vite, TypeScript, React Router, React Hook Form, Zod
 
 ## Структура репозиторію
 
@@ -60,6 +60,14 @@ movie-catalog/
 | PATCH | /api/movies/:id | Оновити жанр          |
 | DELETE| /api/movies/:id | Видалити жанр         |
 
+## Сторінки Frontend
+
+| Маршрут       | Опис                                       |
+|---------------|--------------------------------------------|
+| `/`           | Список фільмів з фільтрацією за жанром     |
+| `/movies/:id` | Детальна сторінка фільму                   |
+| `/genres`     | Список жанрів з формою додавання           |
+
 ## Запуск Backend
 
 ```bash
@@ -68,7 +76,19 @@ npm install
 npm run start:dev
 ```
 
+## Запуск Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
 API доступне на `http://localhost:3000/api`
+
+Застосунок доступний на `http://localhost:5173`
+
+! Backend має бути запущений перед стартом frontend.
 
 ## Приклади запитів (PowerShell)
 
