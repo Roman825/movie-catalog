@@ -12,7 +12,39 @@
 ```
 movie-catalog/
 ├── backend/      # Nest.js REST API
+        └── src/
+            ├── movies/
+            │   ├── dto/
+            │   │   ├── create-movie.dto.ts
+            │   │   └── update-movie.dto.ts
+            │   ├── movies.controller.ts
+            │   ├── movies.service.ts
+            │   └── movies.module.ts
+            ├── genres/
+            │   ├── dto/
+            │   │   ├── create-genre.dto.ts
+            │   │   └── update-genre.dto.ts
+            │   ├── genres.controller.ts
+            │   ├── genres.service.ts
+            │   └── genres.module.ts
+            ├── app.module.ts
+            └── main.ts
 ├── frontend/     # React SPA 
+        └── src/
+            ├── api/
+            │   └── index.ts        # всі HTTP-запити до API
+            ├── components/
+            │   ├── Navbar.tsx      # навігаційна панель
+            │   ├── MovieForm.tsx   # форма створення/редагування фільму
+            │   └── Toast.tsx       # сповіщення
+            ├── pages/
+            │   ├── MoviesPage.tsx      # головна сторінка
+            │   ├── MovieDetailPage.tsx # деталі фільму
+            │   └── GenresPage.tsx      # сторінка жанрів
+            ├── types/
+            │   └── index.ts        # TypeScript інтерфейси
+            ├── App.tsx             # маршрутизація
+            └── main.tsx            # точка входу
 └── README.md
 ```
 
